@@ -1,0 +1,15 @@
+#! gosh
+;; -*- coding: utf-8 -*-
+
+(use gauche.parseopt)
+
+(require "./gsmtp")
+(import gsmtp)
+
+(define (main args)
+  (let-args (cdr args) (
+      (port "p|port=n" 25)
+      (verbose "v|verbose" #f))
+    (gsmtp-sendmail "localhost" port "tom" "tom" "foo" verbose)))
+
+;; vim: tabstop=2 shiftwidth=2 expandtab softtabstop=2 filetype=scheme
